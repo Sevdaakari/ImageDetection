@@ -78,19 +78,13 @@ def detect_object(image):
             cv2.rectangle(img_rgb, (x, y), (x +w, y + h), color, 2)
             cv2.putText(img_rgb, label, (x, y + 30), font, 3, color, 3)
 
-    # Resize output image in case if it's too large
-    max_height = 1000
-    max_width = 1400
-    height, width, _ = img_rgb.shape
-    if height > max_height or width > max_width:
-        scale = min(max_height / height, max_width / width)
-        img_rgb = cv2.resize(img_rgb, (int(width * scale), int(height * scale)))
-
-    # Display results
-    cv2.imshow("Detected objects ", img_rgb)
-
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # Resize output image for python view in case if it's too large
+    # max_height = 1000
+    # max_width = 1400
+    # height, width, _ = img_rgb.shape
+    # if height > max_height or width > max_width:
+    #     scale = min(max_height / height, max_width / width)
+    #     img_rgb = cv2.resize(img_rgb, (int(width * scale), int(height * scale)))
 
     detected_objects = []
     for index in indexes.flatten():
@@ -98,5 +92,12 @@ def detect_object(image):
             "name": classes[class_ids[index]],
             "confidence": confidences[index]
         })
+    
+    # Display results via python
+    # cv2.imshow("Detected objects ", img_rgb)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
-    return detected_objects
+    return detected_objects  
+
+

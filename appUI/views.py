@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect
 from .forms import ImageUploadForm
 from .models import UploadedImage
-from django.conf import settings
 from .detection import detect_object
-import cv2
 
 def upload_image(request):    
     if request.method == 'POST':

@@ -30,7 +30,7 @@
             <img src="{{ path_for_image }}" class="uploaded-image" alt="Uploaded Image">
         {% endif %}
 
-        {% if detected_objects %}
+        {% if detected_objects|length %}
         <div class="detected-objects">
             <h2>Detected Objects</h2>
             <ul>
