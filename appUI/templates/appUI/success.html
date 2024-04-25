@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <style>
+        .container {
+            position: relative; 
+            width: max-content;
+        }
+        .detected-object {
+            position: relative; 
+            padding: 20;
+            z-index: 1;
+        }
+        .uploaded-image {
+            position: relative;
+            width: 50%;
+            height: 50%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your image has been successfully uploaded.</h1>
+    {% csrf_token %}
+    <div class="container">
+        {% if path_for_image %}
+            <h2>Uploaded Image</h2>
+            <img src="{{ path_for_image }}" class="uploaded-image" alt="Uploaded Image">
+        {% endif %}
+
+        {% if detected_objects %}
+        <div class="detected-objects">
+            <h2>Detected Objects</h2>
+            <ul>
+                {% for obj in detected_objects %}
+                    <li class="detected-object">{{ obj.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

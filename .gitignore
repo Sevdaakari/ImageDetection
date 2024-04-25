@@ -1,0 +1,4 @@
+appUI/yolov3.weights
+appUI/yolov3.cfg
+appUI/coco.names
+appUI/.env.secret
