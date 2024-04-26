@@ -1,8 +1,10 @@
 import cv2
+from django.shortcuts import render, redirect
 import torch
 from transformers import CLIPProcessor, CLIPModel
 from PIL import Image
 import numpy as np
+import appUI.views as views
 
 # Load Clip model & Processor
 model_id = 'openai/clip-vit-base-patch32'
@@ -13,6 +15,7 @@ def detect_object(image):
     # Get image
     img_path = f"{image}"
     img = cv2.imread(img_path)
+    print(f'image shape: {img.shape}')
     img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
     img_resized = cv2.resize(img_rgb, (224, 224)) # matching Clip input size
     img_pil = Image.fromarray(img_resized)
@@ -66,15 +69,19 @@ def detect_object(image):
                 class_ids.append(class_id)
 
     indexes = cv2.dnn.NMSBoxes(boxes, confidences, 0.5, 0.4)
+    print(f'indexes: {indexes}')
 
     # Visually annotate the detected objects in the image by drawing bounding boxes around them and adding text labels indicating their names
     font = cv2.FONT_HERSHEY_PLAIN
     colors = [(0, 255, 0), (0, 0, 255), (255, 0, 0)]
+    detected_objects = []
+
     if len(indexes) > 0:
         for index in indexes.flatten():
             x, y, w, h = boxes[index]
             label = str(classes[class_ids[index]])
             color = colors[index % 3]
+            detected_objects.append({"name": classes[class_ids[index]], "confidence": confidences[index]})
             cv2.rectangle(img_rgb, (x, y), (x +w, y + h), color, 2)
             cv2.putText(img_rgb, label, (x, y + 30), font, 3, color, 3)
 
@@ -86,18 +93,10 @@ def detect_object(image):
     #     scale = min(max_height / height, max_width / width)
     #     img_rgb = cv2.resize(img_rgb, (int(width * scale), int(height * scale)))
 
-    detected_objects = []
-    for index in indexes.flatten():
-        detected_objects.append({
-            "name": classes[class_ids[index]],
-            "confidence": confidences[index]
-        })
-    
     # Display results via python
     # cv2.imshow("Detected objects ", img_rgb)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
 
     return detected_objects  
-
 

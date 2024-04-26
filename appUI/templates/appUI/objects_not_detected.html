@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Objects Detected</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <style> 
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #2D2B3A;
+            color: #B8B4C9;
+            background-size: cover;
+        }
+        h1 {
+            font-size: 20px;
+        }
+        h2 {
+            font-size: 15px;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;        
+          }
+
+        div {
+            padding-top: 100px;
+        }
+
+           
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% csrf_token %}
+        <h1>Sorry, no objects were detected in the uploaded image.</h1>
+        <h2>Please try to upload another image, unfortunately our app is not able to detect all objects.</h2>
+        <h2>We promise to improve and be more useful for you next time!</h2>
+    </div>
+</body>
+</html>
