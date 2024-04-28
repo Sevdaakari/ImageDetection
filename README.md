@@ -10,9 +10,7 @@
 
 `pip install --no-cache-dir -r requirements.txt`   
 
-`!wget "https://pjreddie.com/media/files/yolov3.weights"` *Download yolov3.weights file*   
-
-`mv 'yolov3.weights.zip?X-Goog-Algorithm=GOOG4-RSA-SHA256&X-Goog-Credential=gcp-kaggle-com@kaggle-161607.iam.gserviceaccount.com%2F20240428%2Fauto%2Fstorage%2Fgoog4_request&X-Goog-Date=20240428T162133Z&X-Goog-Expires=259200&X-Goog-SignedHead' /appUI/yolov3.weights`  *rename file name to the correct one and move to appUI folder*   
+`!wget "https://pjreddie.com/media/files/yolov3.weights"` *Download yolov3.weights file*    
 
 `python3 manage.py runserver`  
 
