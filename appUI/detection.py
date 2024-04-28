@@ -27,9 +27,9 @@ def detect_object(image):
 
 
     #Object detection using YOLOv3
-    net = cv2.dnn.readNet("/app/appUI/yolov3.weights", "/app/appUI/yolov3.cfg")
+    net = cv2.dnn.readNet("./appUI/yolov3.weights", "./appUI/yolov3.cfg")
     classes = []
-    with open("C:/Users/YSultanov/Sevda/studyPython/ML/imgDetApp/appUI/coco.names", "r") as coco:
+    with open("./appUI/coco.names", "r") as coco:
         classes = coco.read().splitlines()
 
     blob = cv2.dnn.blobFromImage(img_rgb, 1/255, (416, 416), (0, 0, 0), True, crop=False)   
