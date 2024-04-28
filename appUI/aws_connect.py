@@ -4,7 +4,7 @@ from dotenv import load_dotenv, dotenv_values
 import time
 
 load_dotenv()
-config = dotenv_values(".env.secret")
+config = dotenv_values("./appUI/.env.secret")
 
 # Access to S3 bucket
 s3 = boto3.resource(
