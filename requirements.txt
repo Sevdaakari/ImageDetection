@@ -2,5 +2,5 @@ Django==3.2.8
 opencv-python==4.9.0.80
 torch==2.2.2
 transformers==4.39.3
-PIL==9.5.0
+pillow==9.5.0
 

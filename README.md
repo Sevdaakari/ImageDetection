@@ -2,7 +2,7 @@
 
 `apt-get upgrade`
 
-`sudo apt install python3-pip`
+`sudo apt install python3-pip python3-pil -y`
 
 `sudo apt-get update && sudo apt-get install ffmpeg libsm6 libxext6  -y`
 
