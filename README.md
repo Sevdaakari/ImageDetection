@@ -41,7 +41,7 @@ python
 - имя образа: `imgdet`  
 
 
-### Rebuild the image
+## Rebuild the image
 
 `sudo docker stop imgdet-c1`  *Останавливает контейнер*  
 
@@ -56,3 +56,11 @@ python
 `sudo docker rmi <your_container_id>` *Remove old image to extend disk space*  
 
 `sudo docker run --name imgdet-c1 -p 80:8000 -d imgdet` *Run new container*
+
+
+## Start-Restart the docker container
+
+`sudo docker stop imgdet-c1`  
+
+`sudo docker start imgdet-c1`  
+
